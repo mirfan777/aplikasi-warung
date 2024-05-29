@@ -19,9 +19,7 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
-        <x-banner />
-
-        <div class="drawer lg:drawer-open">
+        <div class="drawer lg:drawer-open overflow-x-hidden">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content flex flex-col">
                 <!-- Navbar -->
@@ -51,7 +49,7 @@
                                         </div>
                                     @else
                                     <div class="w-10 rounded-full bg-slate-600">
-                                            <span class="text-4xl text-white">{{ Auth::user()->name }}</span>
+                                            <span class="text-4xl text-white">A</span>
                                     </div>
                                     @endif
                                 </div>
@@ -63,7 +61,7 @@
                             
                             <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                 <!-- Teams Dropdown -->
-                                <li>
+                                <li>    
                                     <a href="{{ route('profile.show') }}" class="{{ request()->routeIs('profile.show') ? 'active' : '' }}">
                                         {{ __('Profile') }}
                                     </a>
@@ -117,13 +115,13 @@
                 <!-- endNavbar -->
 
                 
-                <main>
+                <main class="w-full">
                 {{$slot}}
                 </main>
 
                 <!-- Page content here -->
             </div>
-            <div class="drawer-side">
+            <div class="drawer-side min-h-full ">
                 <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
                 <ul class="menu p-4 w-72 min-h-full bg-base-200 text-base-content">
                     <!-- Sidebar content here -->
@@ -136,28 +134,35 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('anggota') ? 'active' : '' }}">
-                            {{ __('Data Anggota') }}
-                        </a>
+                        <details open>
+                            <summary>Keanggotaan</summary>
+                            <ul>
+                              <li>
+                                <a href="{{ route('keanggotaan/group') }}" class="{{ request()->routeIs('keanggotaan/group') ? 'active' : '' }}">
+                                    {{ __('Group') }}
+                                </a>
+                              </li>
+                              <li>
+                                <a href="{{ route('keanggotaan/member') }}" class="{{ request()->routeIs('keanggotaan/member') ? 'active' : '' }}">
+                                {{ __('Data Anggota') }}
+                                </a>
+                              </li>
+                            </ul>
+                          </details>
                     </li>
                     <li>
-                        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('group') ? 'active' : '' }}">
-                            {{ __('Group') }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('paket') ? 'active' : '' }}">
+                        <a href="{{ route('paket') }}" class="{{ request()->routeIs('paket') ? 'active' : '' }}">
                             {{ __('Paket') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('faktur') ? 'active' : '' }}">
+                        <a href="{{ route('faktur') }}" class="{{ request()->routeIs('faktur') ? 'active' : '' }}">
                             {{ __('Faktur') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('iuran') ? 'active' : '' }}">
-                            {{ __('Iuran Anggota') }}
+                        <a href="{{ route('iuran') }}" class="{{ request()->routeIs('iuran') ? 'active' : '' }}">
+                            {{ __('Iuran') }}
                         </a>
                     </li>
 
