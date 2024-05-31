@@ -151,6 +151,11 @@
                           </details>
                     </li>
                     <li>
+                        <a href="{{ route('barang') }}" class="{{ request()->routeIs('barang') ? 'active' : '' }}">
+                            {{ __('Barang') }}
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('paket') }}" class="{{ request()->routeIs('paket') ? 'active' : '' }}">
                             {{ __('Paket') }}
                         </a>

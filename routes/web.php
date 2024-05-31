@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Pages\Keanggotaan\Member as Member;
 use App\Livewire\Pages\Keanggotaan\Group as Group;
+use App\Livewire\Pages\Barang\Barang as Barang;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +15,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         Route::get('/group', Group::class)->name('keanggotaan/group');
     });
     Route::get('/paket', Member::class)->name('paket');
+    Route::get('/barang', Barang::class)->name('barang'); 
     Route::get('/faktur', Member::class)->name('faktur');
     Route::get('/iuran', Member::class)->name('iuran');
 

@@ -8,6 +8,6 @@ class Barang extends Component
 {
     public function render()
     {
-        return view('livewire.pages.barang.barang');
+        return view('livewire.pages.barang.barang')->layout('layouts.app', ['title' => 'Barang']);
     }
 }

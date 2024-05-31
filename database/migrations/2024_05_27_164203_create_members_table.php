@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date("tgl_keluar");
             $table->bigInteger("sembako");
             $table->bigInteger("tabungan");
-            // $table->string("total");  //total sembako + tabungan
+            $table->string("total");  //total sembako + tabungan
             $table->timestamps();
         });
     }
