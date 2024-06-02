@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Group</title>
   </head>
   <body>
     <x-slot name="header">
@@ -16,8 +16,22 @@
 
     <div class="p-4">
 
+      {{-- delete-modal --}}
+      <div class="modal" id="delete-modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Delete Group?</h3>
+            <p class="py-4">Are you sure you want to delete this group?</p>
+            <form wire:submit.prevent="deleteGroup">
+                @csrf
+                <input type="hidden" name="group_id" id="group_id" value="">
+                <button class="btn btn-error">Delete</button>
+                <button class="btn btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+            </form>
+        </div>
+      </div>
+
       <div class="lg:flex lg:flex-wrap gap-5 mb-5 hidden">
-        <button class="btn btn-md w-40 btn-primary" onclick="tambah_group.showModal()">+ Buat Group</button>
+        <button class="btn btn-md w-40 btn-primary"  onclick="tambah_group.showModal()">+ Buat Group</button>
         <button class="btn btn-md w-40 btn-neutral">Print</button>
         <button class="btn btn-md w-40 btn-outline btn-success">Export</button>
         <button class="btn btn-md w-40 btn-outline btn-success">Import</button>
@@ -60,6 +74,7 @@
           </div>
         </div>
       </div>
+      {{ $groups->links() }}
       <div class="container mx-auto">
         <div class="overflow-x-auto lg:w-full">
           <table class="table-auto w-full">
@@ -95,56 +110,20 @@
               </tr>
             </thead>
             <tbody id="tableBody">
-              <tr>
-                <td class="border px-4 py-2">1</td>
-                <td class="border px-4 py-2">Group A</td>
-                <td class="border px-4 py-2">10</td>
-                <td class="border px-4 py-2">2023-04-01 10:30:00</td>
-                <td class="border px-4 py-2">
-                  <button class="btn btn-xs btn-primary">Edit</button>
-                  <button class="btn btn-xs btn-error">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="border px-4 py-2">2</td>
-                <td class="border px-4 py-2">Group B</td>
-                <td class="border px-4 py-2">15</td>
-                <td class="border px-4 py-2">2022-11-15 14:45:00</td>
-                <td class="border px-4 py-2">
-                  <button class="btn btn-xs btn-primary">Edit</button>
-                  <button class="btn btn-xs btn-error">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="border px-4 py-2">3</td>
-                <td class="border px-4 py-2">Group C</td>
-                <td class="border px-4 py-2">8</td>
-                <td class="border px-4 py-2">2023-02-28 16:20:00</td>
-                <td class="border px-4 py-2">
-                  <button class="btn btn-xs btn-primary">Edit</button>
-                  <button class="btn btn-xs btn-error">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="border px-4 py-2">4</td>
-                <td class="border px-4 py-2">Group D</td>
-                <td class="border px-4 py-2">12</td>
-                <td class="border px-4 py-2">2022-08-10 09:15:00</td>
-                <td class="border px-4 py-2">
-                  <button class="btn btn-xs btn-primary">Edit</button>
-                  <button class="btn btn-xs btn-error">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="border px-4 py-2">5</td>
-                <td class="border px-4 py-2">Group E</td>
-                <td class="border px-4 py-2">20</td>
-                <td class="border px-4 py-2">2023-05-01 13:00:00</td>
-                <td class="border px-4 py-2">
-                  <button class="btn btn-xs btn-primary">Edit</button>
-                  <button class="btn btn-xs btn-error">Delete</button>
-                </td>
-              </tr>
+              @if(isset($groups) && count($groups) > 0)
+                @foreach($groups as $group)
+                    <tr>
+                        <td>{{ $group->id }}</td>
+                        <td>{{ $group->nama }}</td>
+                        <td>{{ $group->created_at }}</td>
+                        <td>{{  $group->total_members }}</td>
+                        <td class="border px-4 py-2">
+                          <a href="{{ route('keanggotaan/group/edit', ['id' => $group->id]) }}" class="btn btn-xs btn-primary">Edit</a>
+                          <a href="{{ route('keanggotaan/group/delete', ['id' => $group->id]) }}" class="btn btn-xs btn-error text-white">Delete</a>
+                        </td>
+                    </tr>
+                 @endforeach
+              @endif
             </tbody>
           </table>
         </div>
@@ -222,5 +201,7 @@
         }
         const columnNames = ['id', 'nama', 'totalMember', 'createdAt'];
       </script>
+
+      </div>
   </body>
 </html>

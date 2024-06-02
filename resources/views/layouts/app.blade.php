@@ -10,15 +10,19 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
 
         <!-- Styles -->
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
+        <x-banner />
+
         <div class="drawer lg:drawer-open overflow-x-hidden">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content flex flex-col">
@@ -116,7 +120,7 @@
 
                 
                 <main class="w-full">
-                {{$slot}}
+                    {{$slot}}
                 </main>
 
                 <!-- Page content here -->
@@ -175,6 +179,49 @@
         @stack('modals')
 
         @livewireScripts
+
+        
     </body>
 </html>
+
+
+
+{{-- ModalMessageStatus --}}
+@if(session('success'))
+<dialog id="success" class="modal">
+    <label class="modal-box" for="">
+        <div class="flex justify-center">
+            <svg class="text-green-500 w-28 h-28 animate-fade-in-down" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <h1 class="flex justify-center font-bold text-2xl">{{session('success')}}</h1>
+    </label>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+</dialog>
+<script>
+    document.getElementById("success").showModal();
+</script>
+
+@elseif(session('error'))
+<dialog id="success" class="modal">
+    <label class="modal-box" for="">
+        <div class="flex justify-center">
+            <svg class="text-red-500 w-28 h-28 animate-fade-in-down" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <h1 class="flex justify-center font-bold text-2xl">{{session('error')}}</h1>
+    </label>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+</dialog>
+<script>
+    document.getElementById("error").showModal();
+</script>
+@endif
+{{-- endModalMessageStatus --}}
 

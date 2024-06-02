@@ -10,4 +10,6 @@ class Group extends Component
     {
         return view('livewire.pages.keanggotaan.group')->layout('layouts.app', ['title' => 'Keanggotaan', 'subTitle' => 'Group']);;
     }
+
+    
 }
