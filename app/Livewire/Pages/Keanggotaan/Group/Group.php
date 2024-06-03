@@ -13,7 +13,7 @@ class Group extends Component
     {
         return view('livewire.pages.keanggotaan.group.group', [
             'groups' => DB::table('groups')
-            ->select('groups.id', 'groups.nama', DB::raw("DATE_FORMAT(groups.created_at, '%d/%m/%Y') as created_at"), DB::raw('COUNT(members.id) as total_members'))
+            ->select('groups.id', 'groups.nama' , DB::raw('COUNT(members.id) as total_members'))
             ->leftJoin('members', 'groups.id', '=', 'members.group_id')
             ->groupBy('groups.id', 'groups.nama')
             ->paginate(10),

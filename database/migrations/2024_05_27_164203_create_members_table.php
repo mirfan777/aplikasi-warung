@@ -17,10 +17,10 @@ return new class extends Migration
             $table->unsignedBigInteger('group_id');
             $table->foreign('group_id')->references('id')->on('groups');
             $table->date("tgl_masuk");
-            $table->date("tgl_keluar");
+            $table->date("tgl_keluar")->nullable();
             $table->bigInteger("sembako");
             $table->bigInteger("tabungan");
-            $table->string("total");  //total sembako + tabungan
+            $table->string("total")->nullable();  //total sembako + tabungan
             $table->timestamps();
         });
     }

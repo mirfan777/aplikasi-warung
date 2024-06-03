@@ -1,3 +1,10 @@
+<x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Keanggotaan') }}
+        </h2>
+    </x-slot>
+    
+
 <div>
     <section class="bg-white dark:bg-gray-900">
         <div class="py-4 px-4  max-w-4xl lg:py-4">

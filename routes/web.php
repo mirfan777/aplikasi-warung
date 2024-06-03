@@ -10,6 +10,7 @@ use App\Livewire\Pages\Keanggotaan\Member\Create as MemberCreate;
 use App\Livewire\Pages\Keanggotaan\Member\Update as MemberUpdate;
 use App\Livewire\Pages\Keanggotaan\Member\Delete as MemberDelete;
 use App\Livewire\Pages\Barang\Barang as Barang;
+use App\Livewire\Pages\Paket\Paket as Paket;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,7 +28,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         Route::get('/member/{id}/delete', MemberDelete::class)->name('keanggotaan/member/delete');
 
     });
-    Route::get('/paket', Member::class)->name('paket');
+    Route::get('/paket', Paket::class)->name('paket');
     Route::get('/barang', Barang::class)->name('barang'); 
     Route::get('/faktur', Member::class)->name('faktur');
     Route::get('/iuran', Member::class)->name('iuran');

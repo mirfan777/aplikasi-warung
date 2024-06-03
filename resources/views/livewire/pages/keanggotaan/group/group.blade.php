@@ -31,7 +31,7 @@
       </div>
 
       <div class="lg:flex lg:flex-wrap gap-5 mb-5 hidden">
-        <button class="btn btn-md w-40 btn-primary"  onclick="tambah_group.showModal()">+ Buat Group</button>
+        <a class="btn btn-md w-40 btn-primary" href="group/tambah">+ Buat Group</a>
         <button class="btn btn-md w-40 btn-neutral">Print</button>
         <button class="btn btn-md w-40 btn-outline btn-success">Export</button>
         <button class="btn btn-md w-40 btn-outline btn-success">Import</button>
@@ -79,27 +79,21 @@
         <div class="overflow-x-auto lg:w-full">
           <table class="table-auto w-full">
             <thead>
-              <tr class="w-full">
-                <th class="px-4 py-2 cursor-pointer" onclick="sortTable(0)">
+              <tr class="w-full border">
+                <th class="px-4 py-2 cursor-pointer border" onclick="sortTable(0)">
                   <div class="flex items-center"> ID <svg id="idSort" class="ml-2 w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M18 15l-6-6-6 6"></path>
                     </svg>
                   </div>
                 </th>
-                <th class="px-4 py-2 cursor-pointer" onclick="sortTable(1)">
+                <th class="px-4 py-2 cursor-pointer border" onclick="sortTable(1)">
                   <div class="flex items-center"> Name <svg id="namaSort" class="ml-2 w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M18 15l-6-6-6 6"></path>
                     </svg>
                   </div>
                 </th>
-                <th class="px-4 py-2 cursor-pointer" onclick="sortTable(2)">
+                <th class="px-4 py-2 cursor-pointer border" onclick="sortTable(2)">
                   <div class="flex items-center"> Total Member <svg id="totalMemberSort" class="ml-2 w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 15l-6-6-6 6"></path>
-                    </svg>
-                  </div>
-                </th>
-                <th class="px-4 py-2 cursor-pointer" onclick="sortTable(3)">
-                  <div class="flex items-center"> Created At <svg id="createdAtSort" class="ml-2 w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M18 15l-6-6-6 6"></path>
                     </svg>
                   </div>
@@ -112,12 +106,11 @@
             <tbody id="tableBody">
               @if(isset($groups) && count($groups) > 0)
                 @foreach($groups as $group)
-                    <tr>
-                        <td>{{ $group->id }}</td>
-                        <td>{{ $group->nama }}</td>
-                        <td>{{ $group->created_at }}</td>
-                        <td>{{  $group->total_members }}</td>
-                        <td class="border px-4 py-2">
+                    <tr class="border">
+                        <td class="border">{{ $group->id }}</td>
+                        <td class="border">{{ $group->nama }}</td>
+                        <td class="border">{{  $group->total_members }}</td>
+                        <td class=" px-4 py-2">
                           <a href="{{ route('keanggotaan/group/edit', ['id' => $group->id]) }}" class="btn btn-xs btn-primary">Edit</a>
                           <a href="{{ route('keanggotaan/group/delete', ['id' => $group->id]) }}" class="btn btn-xs btn-error text-white">Delete</a>
                         </td>
