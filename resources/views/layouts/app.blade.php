@@ -70,7 +70,7 @@
                                         {{ __('Profile') }}
                                     </a>
                                 </li>
-                                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                                <!-- @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                                     <li>
                                         <a href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" class="{{ request()->routeIs('teams.show') ? 'active' : '' }}">
                                             {{ __('Team Settings') }}
@@ -94,7 +94,7 @@
                                                 </a>
                                             </li>
                                         @endforeach
-                                    @endif
+                                    @endif -->
                                 @endif
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -132,11 +132,11 @@
 
                     <h1 class="text-3xl font-extrabold mb-5 flex justify-center">DB WARUNG</h1>
     
-                    <li>
+                    <!-- <li>
                         <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
                             {{ __('Dashboard') }}
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <details open>
                             <summary>Keanggotaan</summary>
@@ -164,11 +164,11 @@
                             {{ __('Paket') }}
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="{{ route('faktur') }}" class="{{ request()->routeIs('faktur') ? 'active' : '' }}">
                             {{ __('Faktur') }}
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="{{ route('iuran') }}" class="{{ request()->routeIs('iuran') ? 'active' : '' }}">
                             {{ __('Iuran') }}

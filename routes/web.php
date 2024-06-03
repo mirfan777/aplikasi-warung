@@ -11,9 +11,10 @@ use App\Livewire\Pages\Keanggotaan\Member\Update as MemberUpdate;
 use App\Livewire\Pages\Keanggotaan\Member\Delete as MemberDelete;
 use App\Livewire\Pages\Barang\Barang as Barang;
 use App\Livewire\Pages\Paket\Paket as Paket;
+use App\Livewire\Pages\Iuran\Iuran as Iuran;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
@@ -30,12 +31,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     });
     Route::get('/paket', Paket::class)->name('paket');
     Route::get('/barang', Barang::class)->name('barang'); 
-    Route::get('/faktur', Member::class)->name('faktur');
-    Route::get('/iuran', Member::class)->name('iuran');
+    Route::get('/iuran', Iuran::class)->name('iuran');
 
     
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return redirect('/keanggotaan/group');
     })->name('dashboard');
 
 
