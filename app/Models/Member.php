@@ -9,7 +9,8 @@ class Member extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fiilable = ['nama', 'group_id', 'tgl_masuk', 'tgl_keluar',
+    'sembako', 'tabungan'];
 
     // Relasi dengan tabel `groups`
     public function group()
