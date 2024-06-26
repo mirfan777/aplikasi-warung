@@ -16,7 +16,7 @@
     <div class="p-4">
         
         <div class="lg:flex lg:flex-wrap gap-5 mb-5 hidden">
-            <button class="btn btn-md w-40 btn-primary" onclick="tambah_anggota.showModal()">+ Buat Anggota</button>
+            <a class="btn btn-md w-40 btn-primary" href="member/tambah">+ Buat Anggota</a>
             <button class="btn btn-md w-40 btn-neutral" >Print</button>
             <button class="btn btn-md w-40 btn-outline btn-success" >Export</button>
             <button class="btn btn-md w-40 btn-outline btn-success" >Import</button>

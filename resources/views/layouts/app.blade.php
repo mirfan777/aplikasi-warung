@@ -164,11 +164,7 @@
                             {{ __('Paket') }}
                         </a>
                     </li>
-                    <!-- <li>
-                        <a href="{{ route('faktur') }}" class="{{ request()->routeIs('faktur') ? 'active' : '' }}">
-                            {{ __('Faktur') }}
-                        </a>
-                    </li> -->
+
                     <li>
                         <a href="{{ route('iuran') }}" class="{{ request()->routeIs('iuran') ? 'active' : '' }}">
                             {{ __('Iuran') }}

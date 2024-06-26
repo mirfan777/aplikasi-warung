@@ -1,7 +1,6 @@
 <style>
     .container {
-    width: 60%;
-    max-width: 1200px;
+    width: 100%;
 
     padding: 20px;
 }
@@ -50,14 +49,22 @@ tbody tr:nth-child(even) {
 }
 
 @media print {
-    body {
-        background-color: #ffffff;
-        font-size: 10pt;
+      @page { margin: 0; }
+      body * {
+        visibility: hidden;
+      }
+
+      #laporan_paket ,  #laporan_paket *{
+        visibility: visible;
+        padding: 0;
+        margin: 0;
+        left: 0;
+        top: 0;
+      }
     }
-    .container {
-        width: 100%;
 
 </style>
+
 
 <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -66,9 +73,14 @@ tbody tr:nth-child(even) {
     </x-slot>
     
 <div>
+    <script>
+        function printPaket(){
+            window.print();
+        }
+    </script>
 <div class="lg:flex lg:flex-wrap gap-5 mb-5 hidden p-4">
             <button class="btn btn-md w-40 btn-primary" onclick="tambah_anggota.showModal()">+ Buat Paket Baru</button>
-            <button class="btn btn-md w-40 btn-neutral" >Print</button>
+            <button class="btn btn-md w-40 btn-neutral" onclick="printPaket()">Print</button>
             <button class="btn btn-md w-40 btn-outline btn-success" >Export</button>
             <button class="btn btn-md w-40 btn-outline btn-success" >Import</button>
         </div>
@@ -123,7 +135,7 @@ tbody tr:nth-child(even) {
                     </div>
                 </div>
 
-<div class="container p-4">
+<div class="container p-4" id="laporan_paket">
         <h1 class="flex">PAKET GROUP</h1> <br>
         <table>
             <thead>

@@ -18,6 +18,9 @@ export default {
             },
         },
     },
+    daisyui: {
+        darkTheme:false
+      },
 
     plugins: [forms, typography ,require('daisyui')],
 };
